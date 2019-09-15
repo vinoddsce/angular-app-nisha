@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-department-container',
@@ -9,4 +9,10 @@ export class DepartmentContainerComponent {
 
   @Input() departmentName: string = "";
 
+  @Output() updateDeptName: EventEmitter<void> = new EventEmitter<void>();
+
+  updateDepartmentName() {
+    console.log("Update clicked !!!!!");
+    this.updateDeptName.emit();
+  }
 }

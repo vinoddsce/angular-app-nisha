@@ -7,5 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title: string = 'This Is My First Angular App !!!!!';
-  departmentName: string = "JavaScript";
+  departmentName: string = "NA";
+
+  updateDeptName() {
+    console.log("AppComponent->updateDeptName()");
+    this.departmentName = "Name Updated";
+  }
+
 }
