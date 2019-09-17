@@ -8,7 +8,6 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 export class DepartmentContainerComponent {
 
   @Input() departmentName: string = "";
-
   @Output() updateDeptName: EventEmitter<void> = new EventEmitter<void>();
 
   updateDepartmentName() {
