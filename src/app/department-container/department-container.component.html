@@ -1,4 +1,13 @@
-<p>Department Name Is : {{departmentName}}</p>
-<button type="button" (click)="updateDepartmentName()">Update</button>
+<h3>
+    <p>Department Name Is : {{departmentName}} <button type="button" (click)="updateDepartmentName($event)" [hidden]="hide">Update</button></p>
+</h3>
+
+<div>
+    <!-- <input placeholder="Enter name here" type="text" name="name" (change)="nameChangeHandler($event.target.value)" /> -->
+    <input [(ngModel)]="stdName" />
+    <input [(ngModel)]="stdCourse" />
+    <input [(ngModel)]="stdFees" />
+    <button (click)="addStudentDetails($event)">Add</button>
+</div>
 
 <app-department></app-department>

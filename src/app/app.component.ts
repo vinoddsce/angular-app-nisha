@@ -9,9 +9,9 @@ export class AppComponent {
   title: string = 'Student Management Angular App !!!!!';
   departmentName: string = "NA";
 
-  updateDeptName() {
-    console.log("AppComponent->updateDeptName()");
-    this.departmentName = "Name Updated";
+  updateDeptName(value: string) {
+    // console.log("AppComponent->updateDeptName() : ", value);
+    this.departmentName = value;
   }
 
 }
