@@ -3,8 +3,8 @@
 <hr />
 <hr />
 
-<app-department-container [departmentName]="departmentName" (updateDeptName)="updateDeptName($event)"></app-department-container>
+<app-department-container (addStudentEvent)="addStudentEvent($event)"></app-department-container>
 
 <hr />
 
-<app-student-container></app-student-container>
+<app-student-container [students]="students"></app-student-container>
