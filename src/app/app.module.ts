@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { DepartmentContainerComponent } from './department-container/department-container.component';
 import { StudentContainerComponent } from './student-container/student-container.component';
 import { DepartmentComponent } from './department-container/department/department.component';
+import { StudentComponent } from './student-container/student/student.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DepartmentContainerComponent,
     StudentContainerComponent,
-    DepartmentComponent
+    DepartmentComponent,
+    StudentComponent
   ],
   imports: [
     BrowserModule,
