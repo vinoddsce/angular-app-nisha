@@ -9,4 +9,7 @@ export class StudentContainerComponent {
 
   @Input() students: { _id: number, name: string, course: string, fees: number }[] = [];
 
+
+  arr: number[] = [1, 2, 3, 4, 5];
+
 }

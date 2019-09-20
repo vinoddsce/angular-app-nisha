@@ -1,5 +1,11 @@
 Department Name Is : <h1>{{deptName}} </h1>
 
+
+<div *ngIf="showErrorMessage" class="error-message">
+    <p>Can't add empty student details</p>
+</div>
+
+
 <div>
     <!-- <input placeholder="Enter name here" type="text" name="name" (change)="nameChangeHandler($event.target.value)" /> -->
     <input [(ngModel)]="stdName" />
