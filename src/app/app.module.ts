@@ -8,6 +8,8 @@ import { DepartmentContainerComponent } from './department-container/department-
 import { StudentContainerComponent } from './student-container/student-container.component';
 import { DepartmentComponent } from './department-container/department/department.component';
 import { StudentComponent } from './student-container/student/student.component';
+import { TestDirective } from './directives/test.directive';
+import ChangeBgColorDirective from './directives/change-bg-color.directive';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { StudentComponent } from './student-container/student/student.component'
     DepartmentContainerComponent,
     StudentContainerComponent,
     DepartmentComponent,
-    StudentComponent
+    StudentComponent,
+    TestDirective,
+    ChangeBgColorDirective
   ],
   imports: [
     BrowserModule,

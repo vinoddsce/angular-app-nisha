@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import Student from './model/Student';
 
 @Component({
@@ -6,14 +6,22 @@ import Student from './model/Student';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
   title: string = 'Student Management Angular App !!!!!';
   departmentName: string = "NA";
-
   // students: { _id: number, name: string, course: string, fees: number }[] = [];
   students: Student[] = [];
   count: number = 0;
 
+  constructor(private ref: ElementRef) {
+  }
+
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    console.log(this.ref);
+  }
   addStudentEvent(obj: { name: string, course: string, fees: number }) {
     let std = {
       _id: this.students.length + 1,
@@ -28,3 +36,5 @@ export class AppComponent {
   }
 
 }
+
+
