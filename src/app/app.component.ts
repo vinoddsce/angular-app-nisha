@@ -12,9 +12,9 @@ export class AppComponent implements OnInit {
   departmentName: string = "NA";
   // students: { _id: number, name: string, course: string, fees: number }[] = [];
 
-  s1 = { _id: "", name: "Vinod", course: "", fees: 0 };
-  s2 = { _id: "100", name: "Kumar", course: "", fees: 0 };
-  s3 = { _id: "", name: "M", course: "", fees: 0 };
+  // s1 = { _id: "", name: "Vinod", course: "", fees: 0 };
+  // s2 = { _id: "100", name: "Kumar", course: "", fees: 0 };
+  // s3 = { _id: "", name: "M", course: "", fees: 0 };
 
   students: Student[] = [];
   count: number = 0;
@@ -29,9 +29,9 @@ export class AppComponent implements OnInit {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     // console.log(this.ref);
-    this.students.push(this.s1);
-    this.students.push(this.s2);
-    this.students.push(this.s3);
+    // this.students.push(this.s1);
+    // this.students.push(this.s2);
+    // this.students.push(this.s3);
   }
   addStudentEvent(obj: { name: string, course: string, fees: number }) {
     let std = {

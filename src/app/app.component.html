@@ -14,8 +14,8 @@
 
 <!-- <ng-template [ngIf]="isDev">This Is Dev</ng-template> -->
 
-<ng-template *ngIf="isDev then showEnvi"></ng-template>
-<ng-template #showEnvi>This Is Development</ng-template>
+<!-- <ng-template *ngIf="isDev then showEnvi"></ng-template>
+<ng-template #showEnvi>This Is Development</ng-template> -->
 
 
 <hr />
@@ -25,9 +25,11 @@
 
 <hr />
 
-<!-- <app-student-container [students]="students" [count]="count">
-</app-student-container> -->
+<app-student-container [students]="students" [count]="count">
+    <h2>Title: This Is Student List Container</h2>
+    <h3>Sub-Title: Only Students</h3>
+</app-student-container>
 
-<ng-container *ngFor="let s of students">
+<!-- <ng-container *ngFor="let s of students">
     <p *ngIf="s._id">{{s.name}}</p>
-</ng-container>
+</ng-container> -->
