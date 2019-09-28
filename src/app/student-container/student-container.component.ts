@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, DoCheck, AfterContentInit, AfterContentChecked, ViewChild, ElementRef, ContentChild, ContentChildren, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, DoCheck, AfterContentInit, AfterContentChecked, ViewChild, ElementRef, ContentChild, ContentChildren, AfterViewInit, TemplateRef } from '@angular/core';
 import Student from '../model/Student';
 
 @Component({
@@ -13,6 +13,11 @@ export class StudentContainerComponent implements OnChanges, OnInit, DoCheck,
   @Input() students: Student[] = [];
   @Input() count: number = 0;
 
+
+  @Input() companyLogo: TemplateRef<any>;
+
+  countMessage: string = "";
+
   @ContentChild("heading", { static: false }) headingRef: ElementRef;
   // @ViewChild("count", { static: true }) countRef: ElementRef;
 
@@ -23,12 +28,26 @@ export class StudentContainerComponent implements OnChanges, OnInit, DoCheck,
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    // if (this.count > 0) {
+    //   this.countMessage = "Total Students: " + this.count;
+    // } else {
+    //   this.countMessage = "No Student Added";
+    // }
+    this.countMessage = this.count > 0 ? "Total Students: " + this.count : "No Student Added";
     console.log("StudentContainerComponent->ngOnChanges():", changes)
   }
 
   ngOnInit(): void {
     console.log("StudentContainerComponent->ngOnInit():");
     this.previousStudents = this.students.map(s => s);
+
+    // if (this.count > 0) {
+    //   this.countMessage = "Total Students: " + this.count;
+    // } else {
+    //   this.countMessage = "No Student Added";
+    // }
+
+    this.countMessage = this.count > 0 ? "Total Students: " + this.count : "No Student Added";
   }
 
   ngDoCheck(): void {

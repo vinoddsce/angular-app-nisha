@@ -1,35 +1,35 @@
-<h1 changeBgColor defaultColor='yellow'>{{title}}</h1>
+<div>
+    <h1 changeBgColor defaultColor='yellow'>{{title}}</h1>
 
-<!-- <h3 *ngIf="isDev">This Is Development !!!!</h3> -->
-
-<!-- <ng-template [ngIf]="isDev">
-    <h3>This Is Development !!!!</h3>
-</ng-template> -->
-
-<!-- <ng-template *ngIf="isDev">This Is Dev</ng-template> -->
-
-<!-- <ng-template [ngIf]="isDev">
-    <ng-template>This Is Dev</ng-template>
-</ng-template> -->
-
-<!-- <ng-template [ngIf]="isDev">This Is Dev</ng-template> -->
-
-<!-- <ng-template *ngIf="isDev then showEnvi"></ng-template>
-<ng-template #showEnvi>This Is Development</ng-template> -->
+    <ng-container *ngTemplateOutlet="companyLogo"></ng-container>
 
 
-<hr />
-<hr />
+    <hr />
+    <hr />
 
-<app-department-container (addStudentEvent)="addStudentEvent($event)"></app-department-container>
+    <app-department-container (addStudentEvent)="addStudentEvent($event)">
+        <ng-container *ngTemplateOutlet="companyLogo"></ng-container>
+    </app-department-container>
 
-<hr />
+    <hr />
 
-<app-student-container [students]="students" [count]="count">
-    <h2>Title: This Is Student List Container</h2>
-    <h3>Sub-Title: Only Students</h3>
-</app-student-container>
+    <!-- <app-student-container [students]="students" [count]="count">
+        <ng-container *ngTemplateOutlet="companyLogo"></ng-container>
+        <h2>Title: This Is Student List Container</h2>
+        <h3>Sub-Title: Only Students</h3>
+    </app-student-container> -->
 
-<!-- <ng-container *ngFor="let s of students">
-    <p *ngIf="s._id">{{s.name}}</p>
-</ng-container> -->
+    <app-student-container [students]="students" [count]="count" [companyLogo]="companyLogo">
+    </app-student-container>
+</div>
+
+
+
+
+
+<ng-template #companyLogo>
+    <div>
+        <h1>ABCD Company</h1>
+        <h2>Copyrights </h2>
+    </div>
+</ng-template>

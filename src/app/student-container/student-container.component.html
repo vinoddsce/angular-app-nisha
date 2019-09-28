@@ -4,12 +4,13 @@
 
 
 <!-- <ng-content select="h2"></ng-content> -->
-<ng-content></ng-content>
-<ng-content select="h3"></ng-content>
+<!-- <ng-content></ng-content>
+<ng-content select="h3"></ng-content> -->
+
+<ng-container *ngTemplateOutlet="companyLogo ? companyLogo : defaultLogo"></ng-container>
 
 
-
-<h3>Total Students: {{count}}</h3>
+<h3>{{countMessage}}</h3>
 
 <h3><span style="margin: 0px 20px">ID</span><span style="margin: 0px 20px">Name</span><span style="margin: 0px 20px">Course</span><span
         style="margin: 0px 20px">Fees</span></h3>
@@ -25,3 +26,7 @@
 </app-student>
                        
  
+
+<ng-template #defaultLogo>
+    <h2>Default Logo</h2>
+</ng-template>
