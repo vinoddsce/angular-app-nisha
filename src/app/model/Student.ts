@@ -1,5 +1,5 @@
 export default interface Student {
-    _id: number;
+    _id: string;
     name: string;
     course: string;
     fees: number

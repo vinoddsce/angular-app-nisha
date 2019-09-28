@@ -1,4 +1,22 @@
-<h1 changeBgColor>{{title}}</h1>
+<h1 changeBgColor defaultColor='yellow'>{{title}}</h1>
+
+<!-- <h3 *ngIf="isDev">This Is Development !!!!</h3> -->
+
+<!-- <ng-template [ngIf]="isDev">
+    <h3>This Is Development !!!!</h3>
+</ng-template> -->
+
+<!-- <ng-template *ngIf="isDev">This Is Dev</ng-template> -->
+
+<!-- <ng-template [ngIf]="isDev">
+    <ng-template>This Is Dev</ng-template>
+</ng-template> -->
+
+<!-- <ng-template [ngIf]="isDev">This Is Dev</ng-template> -->
+
+<ng-template *ngIf="isDev then showEnvi"></ng-template>
+<ng-template #showEnvi>This Is Development</ng-template>
+
 
 <hr />
 <hr />
@@ -7,6 +25,9 @@
 
 <hr />
 
-<app-student-container [students]="students" [count]="count">
-    <h3 #heading>Student Container</h3>
-</app-student-container>
+<!-- <app-student-container [students]="students" [count]="count">
+</app-student-container> -->
+
+<ng-container *ngFor="let s of students">
+    <p *ngIf="s._id">{{s.name}}</p>
+</ng-container>

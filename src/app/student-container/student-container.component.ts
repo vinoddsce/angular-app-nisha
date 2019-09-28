@@ -19,7 +19,7 @@ export class StudentContainerComponent implements OnChanges, OnInit, DoCheck,
   previousStudents: Student[] = [];
 
   constructor() {
-    console.log("StudentContainerComponent->constructor(): ");
+    console.log("StudentContainerComponent->constructor(): ", this.students);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
