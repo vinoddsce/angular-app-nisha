@@ -18,8 +18,10 @@ export class StudentContainerComponent implements OnChanges, OnInit, DoCheck,
 
   countMessage: string = "";
 
+  // It is mandatory to provide a static flag to define when you want a 
+  // ViewChild and ContentChild instance to be resolved.
   @ContentChild("heading", { static: false }) headingRef: ElementRef;
-  // @ViewChild("count", { static: true }) countRef: ElementRef;
+  @ViewChild("count", { static: true }) countRef: ElementRef;
 
   previousStudents: Student[] = [];
 
@@ -46,8 +48,8 @@ export class StudentContainerComponent implements OnChanges, OnInit, DoCheck,
     // } else {
     //   this.countMessage = "No Student Added";
     // }
-
     this.countMessage = this.count > 0 ? "Total Students: " + this.count : "No Student Added";
+
   }
 
   ngDoCheck(): void {
@@ -64,13 +66,13 @@ export class StudentContainerComponent implements OnChanges, OnInit, DoCheck,
   }
 
   ngAfterContentChecked(): void {
-    console.log("StudentContainerComponent->ngAfterContentChecked()");
+    // console.log("StudentContainerComponent->ngAfterContentChecked()");
   }
 
   ngAfterViewInit(): void {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
-    // console.log("StudentContainerComponent->ngAfterViewInit(): Ref", this.countRef);
+    console.log("StudentContainerComponent->ngAfterViewInit(): Ref", this.countRef);
   }
   ngAfterViewChecked(): void {
     //Called after every check of the component's view. Applies to components only.
