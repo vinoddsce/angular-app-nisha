@@ -20,9 +20,19 @@ export class AppComponent implements OnInit {
   count: number = 0;
 
   isDev: boolean = true;
+  isShowLogo: boolean = true;
 
   constructor(private ref: ElementRef) {
 
+  }
+
+
+  showLogo(event) {
+    this.isShowLogo = true;
+  }
+
+  hideLogo(event) {
+    this.isShowLogo = false;
   }
 
   ngOnInit(): void {

@@ -1,14 +1,13 @@
 <div>
     <h1 changeBgColor defaultColor='yellow'>{{title}}</h1>
-
+    <button (click)="showLogo($event)">ShowLogo</button>
+    <button (click)="hideLogo($event)">HideLogo</button>
     <ng-container *ngTemplateOutlet="companyLogo"></ng-container>
-
-
     <hr />
     <hr />
 
     <app-department-container (addStudentEvent)="addStudentEvent($event)">
-        <ng-container *ngTemplateOutlet="companyLogo"></ng-container>
+        <!-- <ng-container *ngTemplateOutlet="companyLogo"></ng-container> -->
     </app-department-container>
 
     <hr />
@@ -19,7 +18,7 @@
         <h3>Sub-Title: Only Students</h3>
     </app-student-container> -->
 
-    <app-student-container [students]="students" [count]="count" [companyLogo]="companyLogo">
+    <app-student-container [students]="students" [count]="count">
         <h1 #heading>Heading Ref</h1>
     </app-student-container>
 </div>
@@ -29,7 +28,7 @@
 
 
 <ng-template #companyLogo>
-    <div>
+    <div *showLogo="isShowLogo">
         <h1>ABCD Company</h1>
         <h2>Copyrights </h2>
     </div>

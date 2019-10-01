@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, DoCheck, AfterContentInit, AfterContentChecked, ViewChild, ElementRef, ContentChild, ContentChildren, AfterViewInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, DoCheck, AfterContentInit, AfterContentChecked, ViewChild, ElementRef, ContentChild, ContentChildren, AfterViewInit, TemplateRef, ViewChildren, QueryList } from '@angular/core';
 import Student from '../model/Student';
+import { StudentComponent } from './student/student.component';
 
 @Component({
   selector: 'app-student-container',
@@ -14,7 +15,7 @@ export class StudentContainerComponent implements OnChanges, OnInit, DoCheck,
   @Input() count: number = 0;
 
 
-  @Input() companyLogo: TemplateRef<any>;
+  // @Input() companyLogo: TemplateRef<any>;
 
   countMessage: string = "";
 
@@ -24,6 +25,9 @@ export class StudentContainerComponent implements OnChanges, OnInit, DoCheck,
   @ViewChild("count", { static: true }) countRef: ElementRef;
 
   previousStudents: Student[] = [];
+
+
+  @ViewChildren(StudentComponent) studentComponenets: QueryList<StudentComponent>;
 
   constructor() {
     console.log("StudentContainerComponent->constructor(): ", this.students);
@@ -73,11 +77,14 @@ export class StudentContainerComponent implements OnChanges, OnInit, DoCheck,
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
     console.log("StudentContainerComponent->ngAfterViewInit(): Ref", this.countRef);
+    console.log("StudentContainerComponent->ngAfterViewInit(): studentComponenets", this.studentComponenets);
+
   }
   ngAfterViewChecked(): void {
     //Called after every check of the component's view. Applies to components only.
     //Add 'implements AfterViewChecked' to the class.
-    console.log("StudentContainerComponent->ngAfterViewChecked()");
+    // console.log("StudentContainerComponent->ngAfterViewChecked()");
+    console.log("StudentContainerComponent->ngAfterViewChecked(): studentComponenets", this.studentComponenets);
   }
 }
 

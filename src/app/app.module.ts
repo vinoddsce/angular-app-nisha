@@ -10,6 +10,8 @@ import { DepartmentComponent } from './department-container/department/departmen
 import { StudentComponent } from './student-container/student/student.component';
 import { TestDirective } from './directives/test.directive';
 import ChangeBgColorDirective from './directives/change-bg-color.directive';
+import BackgroudGreenDirective from './directives/backgroud.green.directive';
+import { ShowLogoDirective } from './directives/show.logo.directive';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import ChangeBgColorDirective from './directives/change-bg-color.directive';
     DepartmentComponent,
     StudentComponent,
     TestDirective,
-    ChangeBgColorDirective
+    ChangeBgColorDirective,
+    BackgroudGreenDirective,
+    ShowLogoDirective
   ],
   imports: [
     BrowserModule,
