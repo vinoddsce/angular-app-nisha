@@ -16,13 +16,17 @@ export class DepartmentContainerComponent {
   stdCourse: string = "";
   stdFees: number = 0;
 
-
-  addStudentDetails(event: MouseEvent) {
-    if (this.stdName === null || this.stdName === '') {
-      this.showErrorMessage = true;
-    } else {
-      this.showErrorMessage = false;
-      this.addStudentEvent.emit({ name: this.stdName, course: this.stdCourse, fees: this.stdFees });
-    }
+  onSubmit(studentForm) {
+    console.log("Submit: ", studentForm.value);
+    this.addStudentEvent.emit({ name: studentForm.value.name, course: studentForm.value.course, fees: studentForm.value.fees });
   }
+
+  // addStudentDetails(event: MouseEvent) {
+  //   if (this.stdName === null || this.stdName === '') {
+  //     this.showErrorMessage = true;
+  //   } else {
+  //     this.showErrorMessage = false;
+  //     this.addStudentEvent.emit({ name: this.stdName, course: this.stdCourse, fees: this.stdFees });
+  //   }
+  // }
 }

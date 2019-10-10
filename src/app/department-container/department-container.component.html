@@ -9,10 +9,36 @@
 
 <div>
     <!-- <input placeholder="Enter name here" type="text" name="name" (change)="nameChangeHandler($event.target.value)" /> -->
-    <input [(ngModel)]="stdName" />
+    <!-- <input [(ngModel)]="stdName" />
     <input [(ngModel)]="stdCourse" />
     <input [(ngModel)]="stdFees" />
-    <button (click)="addStudentDetails($event)">Add</button>
+    <button (click)="addStudentDetails($event)">Add</button> -->
+
+    <form #studentForm="ngForm" (submit)="onSubmit(studentForm)" novalidate>
+        <div class="form-group">
+                   <label for="name">Name</label>
+                   <input type="text" class="form-control" name="name" ngModel required minlength="3">
+                </div>
+        <div *ngIf="!studentForm.controls.name?.valid && (studentForm.controls.name?.dirty || studentForm.controls.name?.touched)"
+            class="alert alert-danger">
+               <div [hidden]="!studentForm.controls.name.errors.required">
+                Name is required
+                   </div>
+            <div [hidden]="!studentForm.controls.name.errors.minlength">
+                Name is min length
+                   </div>
+        </div>
+        <div class="form-group">
+                   <label for="course">Course</label>
+                   <input type="text" class="form-control" name="course" ngModel required>
+                </div>
+        <div class="form-group">
+                   <label for="fees">Fees</label>
+                   <input type="text" class="form-control" name="fees" ngModel minlength="2">
+                </div>
+        <button type="submit" [disabled]="!studentForm.valid">Submit</button>
+    </form>
+
 </div>
 
 <app-department></app-department>
