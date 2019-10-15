@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import Student from './model/Student';
+import StudentService from './service/student.service';
 
 @Component({
   selector: 'app-root',
@@ -22,8 +23,7 @@ export class AppComponent implements OnInit {
   isDev: boolean = true;
   isShowLogo: boolean = true;
 
-  constructor(private ref: ElementRef) {
-
+  constructor(private studentService: StudentService) {
   }
 
 
@@ -36,12 +36,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    // console.log(this.ref);
-    // this.students.push(this.s1);
-    // this.students.push(this.s2);
-    // this.students.push(this.s3);
+    this.students = this.studentService.getAllStudents();
   }
   addStudentEvent(obj: { name: string, course: string, fees: number }) {
     let std = {
