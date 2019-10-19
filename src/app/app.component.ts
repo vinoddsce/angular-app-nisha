@@ -36,7 +36,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.students = this.studentService.getAllStudents();
+    this.studentService.getAllStudents().subscribe((students: Student[]) => {
+      this.students = students;
+    });
   }
   addStudentEvent(obj: { name: string, course: string, fees: number }) {
     let std = {

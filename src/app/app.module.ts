@@ -13,6 +13,7 @@ import ChangeBgColorDirective from './directives/change-bg-color.directive';
 import BackgroudGreenDirective from './directives/backgroud.green.directive';
 import { ShowLogoDirective } from './directives/show.logo.directive';
 import StudentService from './service/student.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import StudentService from './service/student.service';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [StudentService],
