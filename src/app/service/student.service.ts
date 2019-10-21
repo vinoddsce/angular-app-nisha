@@ -1,27 +1,32 @@
 import { Injectable } from '@angular/core';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry, map, } from 'rxjs/operators';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { BaseService } from './base.service';
+
+import { environment } from '../../environments/environment';
 import Student from '../model/Student';
-import { Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const httpOptions = {
     headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'my-auth-token'
+        'Content-Type': 'application/json'
     })
-}
-
-export const STUDENTS: Student[] = [
-    { _id: "1", name: "Vinod", course: "Angular8", fees: 1000 },
-    { _id: "2", name: "Nisha", course: "ReactJS", fees: 0 }
-]
-
+};
 
 @Injectable()
-export default class StudentService {
+export default class StudentService extends BaseService {
     constructor(private http: HttpClient) {
+        super();
     }
 
     getAllStudents(): Observable<Student[]> {
         return this.http.get<any>('http://localhost:8000/students');
+    }
+
+    addStudent(obj: Object) {
+        console.log("obj: ", obj);
+        return this.http.post('http://localhost:8000/students', obj, httpOptions).pipe(
+            catchError(this.handleError)
+        );
     }
 }

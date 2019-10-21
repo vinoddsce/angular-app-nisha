@@ -41,13 +41,19 @@ export class AppComponent implements OnInit {
     });
   }
   addStudentEvent(obj: { name: string, course: string, fees: number }) {
-    let std = {
-      _id: this.students.length + 1 + "",
-      name: obj.name,
-      course: obj.course,
-      fees: obj.fees
-    }
 
+    var std: Student = new Student();
+    std.name = obj.name;
+    std.course = obj.course;
+    std.fees = obj.fees;
+
+    var result = this.studentService.addStudent(std);
+    console.log("Result: ", result);
+    result.subscribe(data => {
+      console.log("App - result !!!!", data);
+      std._id = data["_id"];
+      // this.studentDataService.addStudent(obj);
+    })
     this.students.push(std);
     this.count = this.students.length;
     console.log(this.students);
