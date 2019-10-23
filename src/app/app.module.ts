@@ -14,6 +14,8 @@ import BackgroudGreenDirective from './directives/backgroud.green.directive';
 import { ShowLogoDirective } from './directives/show.logo.directive';
 import StudentService from './service/student.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeContainerComponent } from './home-container/home-container.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { HttpClientModule } from '@angular/common/http';
     TestDirective,
     ChangeBgColorDirective,
     BackgroudGreenDirective,
-    ShowLogoDirective
+    ShowLogoDirective,
+    HomeContainerComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

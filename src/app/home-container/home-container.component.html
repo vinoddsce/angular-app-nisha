@@ -1,0 +1,15 @@
+<p>home-container works!</p>
+
+<h1 changeBgColor defaultColor='yellow'>{{title}}</h1>
+<button (click)="showLogo($event)">ShowLogo</button>
+<button (click)="hideLogo($event)">HideLogo</button>
+<ng-container *ngTemplateOutlet="companyLogo"></ng-container>
+
+
+
+<ng-template #companyLogo>
+    <div *showLogo="isShowLogo">
+        <h1>ABCD Company</h1>
+        <h2>Copyrights </h2>
+    </div>
+</ng-template>

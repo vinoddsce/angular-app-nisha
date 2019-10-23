@@ -1,35 +1,29 @@
-<div>
-    <h1 changeBgColor defaultColor='yellow'>{{title}}</h1>
-    <button (click)="showLogo($event)">ShowLogo</button>
-    <button (click)="hideLogo($event)">HideLogo</button>
-    <ng-container *ngTemplateOutlet="companyLogo"></ng-container>
+<!-- <div>
+
     <hr />
     <hr />
 
     <app-department-container (addStudentEvent)="addStudentEvent($event)">
-        <!-- <ng-container *ngTemplateOutlet="companyLogo"></ng-container> -->
+
     </app-department-container>
 
     <hr />
 
-    <!-- <app-student-container [students]="students" [count]="count">
-        <ng-container *ngTemplateOutlet="companyLogo"></ng-container>
-        <h2>Title: This Is Student List Container</h2>
-        <h3>Sub-Title: Only Students</h3>
-    </app-student-container> -->
 
     <app-student-container [students]="students" [count]="count">
         <h1 #heading>Heading Ref</h1>
     </app-student-container>
+</div> -->
+
+
+<div>
+
+    <nav>
+        <a routerLink='/home'>Home</a>
+        <a routerLink='/department'>Department</a>
+        <a routerLink='/student-list'>StudentsList</a>
+    </nav>
+
+    <br />
+    <router-outlet></router-outlet>
 </div>
-
-
-
-
-
-<ng-template #companyLogo>
-    <div *showLogo="isShowLogo">
-        <h1>ABCD Company</h1>
-        <h2>Copyrights </h2>
-    </div>
-</ng-template>
