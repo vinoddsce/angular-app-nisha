@@ -2,6 +2,8 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import Student from './model/Student';
 import StudentService from './service/student.service';
 import { StudentDataService } from './service/student-data.service';
+import { AuthenticationService } from './service/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +27,8 @@ export class AppComponent implements OnInit {
 
 
   constructor(private studentService: StudentService,
-    private studentDataService: StudentDataService) {
+    private studentDataService: StudentDataService, private router: Router,
+    private authenticationService: AuthenticationService) {
   }
 
 
@@ -55,6 +58,11 @@ export class AppComponent implements OnInit {
     this.students.push(std);
     this.count = this.students.length;
     console.log(this.students);
+  }
+
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
   }
 }
 
