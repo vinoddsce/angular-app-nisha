@@ -1,4 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import StudentService from '../service/student.service';
+import { StudentDataService } from '../service/student-data.service';
+import Student from '../model/Student';
 
 @Component({
   selector: 'app-department-container',
@@ -16,9 +19,24 @@ export class DepartmentContainerComponent {
   stdCourse: string = "";
   stdFees: number = 0;
 
+  constructor(private studentService: StudentService,
+    private studentDataService: StudentDataService) {
+
+  }
+
   onSubmit(studentForm) {
     console.log("Submit: ", studentForm.value);
     this.addStudentEvent.emit({ name: studentForm.value.name, course: studentForm.value.course, fees: studentForm.value.fees });
+
+    let std: Student = new Student();
+    std.name = studentForm.value.name;
+    std.course = studentForm.value.course;
+    std.fees = studentForm.value.fees;
+
+    let response = this.studentService.addStudent(std);
+    response.subscribe(data => {
+      console.log("Response: ", data);
+    });
   }
 
   // addStudentDetails(event: MouseEvent) {

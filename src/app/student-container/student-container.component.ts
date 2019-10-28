@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, DoCheck, AfterContentInit, AfterContentChecked, ViewChild, ElementRef, ContentChild, ContentChildren, AfterViewInit, TemplateRef, ViewChildren, QueryList } from '@angular/core';
 import Student from '../model/Student';
 import { StudentComponent } from './student/student.component';
+import { StudentDataService } from '../service/student-data.service';
 
 @Component({
   selector: 'app-student-container',
@@ -10,12 +11,8 @@ import { StudentComponent } from './student/student.component';
 export class StudentContainerComponent implements OnChanges, OnInit, DoCheck,
   AfterContentInit, AfterContentChecked, AfterViewInit, AfterContentChecked {
 
-  // @Input() students: { _id: number, name: string, course: string, fees: number }[] = [];
-  @Input() students: Student[] = [];
-  @Input() count: number = 0;
-
-
-  // @Input() companyLogo: TemplateRef<any>;
+  students: Student[] = [];
+  count: number = 0;
 
   countMessage: string = "";
 
@@ -26,32 +23,27 @@ export class StudentContainerComponent implements OnChanges, OnInit, DoCheck,
 
   previousStudents: Student[] = [];
 
-
   @ViewChildren(StudentComponent) studentComponenets: QueryList<StudentComponent>;
 
-  constructor() {
-    console.log("StudentContainerComponent->constructor(): ", this.students);
+  constructor(private studentDataService: StudentDataService) {
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    // if (this.count > 0) {
-    //   this.countMessage = "Total Students: " + this.count;
-    // } else {
-    //   this.countMessage = "No Student Added";
-    // }
     this.countMessage = this.count > 0 ? "Total Students: " + this.count : "No Student Added";
     console.log("StudentContainerComponent->ngOnChanges():", changes)
   }
 
   ngOnInit(): void {
     console.log("StudentContainerComponent->ngOnInit():");
-    this.previousStudents = this.students.map(s => s);
 
-    // if (this.count > 0) {
-    //   this.countMessage = "Total Students: " + this.count;
-    // } else {
-    //   this.countMessage = "No Student Added";
-    // }
+    this.studentDataService.studentsEmitter.subscribe((stds: Student[]) => {
+      this.students = stds;
+      this.count = this.students.length;
+      console.log("COUNT: ", this.count);
+    })
+
+    this.previousStudents = this.students.map(s => s);
     this.countMessage = this.count > 0 ? "Total Students: " + this.count : "No Student Added";
 
   }

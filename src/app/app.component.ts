@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import Student from './model/Student';
 import StudentService from './service/student.service';
+import { StudentDataService } from './service/student-data.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import StudentService from './service/student.service';
 })
 export class AppComponent implements OnInit {
 
-  title: string = 'Student Management Angular App !!!!!';
+
   departmentName: string = "NA";
   // students: { _id: number, name: string, course: string, fees: number }[] = [];
 
@@ -21,25 +22,22 @@ export class AppComponent implements OnInit {
   count: number = 0;
 
   isDev: boolean = true;
-  isShowLogo: boolean = true;
 
-  constructor(private studentService: StudentService) {
+
+  constructor(private studentService: StudentService,
+    private studentDataService: StudentDataService) {
   }
 
 
-  showLogo(event) {
-    this.isShowLogo = true;
-  }
 
-  hideLogo(event) {
-    this.isShowLogo = false;
-  }
 
   ngOnInit(): void {
     this.studentService.getAllStudents().subscribe((students: Student[]) => {
-      this.students = students;
+      // this.students = students;
+      this.studentDataService.setStudents(students);
     });
   }
+
   addStudentEvent(obj: { name: string, course: string, fees: number }) {
 
     var std: Student = new Student();
